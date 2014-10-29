@@ -31,7 +31,7 @@ end
 end
 
 p [1, \"bob\"].say_hi", :right =>'"HEY!"', :distractor => ['1','bob','Nunguna de las anteriores'] )
-	@p4 = Question::SimpleChoize.new(:text => "¿Cu´al es el tipo del objeto en el siguiente c´odigo Ruby?
+	@p4 = Question::SimpleChoice.new(:text => "¿Cu´al es el tipo del objeto en el siguiente c´odigo Ruby?
 
 class Objeto
 
@@ -47,9 +47,21 @@ end
         expect(@sc.right) == 4
         expect(@sc.distractor) == [9,3,1]
       end
-      it "Se crea correctamente p1" do
+      it "Pregunta 1" do
 	expect(@p1.right) == 'nil'
       end
+      it "Pregunta 2" do 
+	expect(@p2.right) == 'falso'
+      end
+      it "Pregunta 3"do
+	expect(@p3.right) == '"HEY!"'
+      end
+      it "Pregunta 4"do 
+	expect(@p4.right) == 'Un objeto'
+      end
+      it "Pregunta 5"do
+	expect(@p5.right) == 'Cierto'
+      end 
 
       it "Has to have the three components" do
        expect { Question::SimpleChoice.new(:text=>'5*8=?')}.to raise_error(ArgumentError)
