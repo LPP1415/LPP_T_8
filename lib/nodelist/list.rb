@@ -23,9 +23,18 @@ class Lista
 	end
 	def to_s
 		"#{@head}"
-	end		
+	end
+  def to_a
+    a_value = Array.new
+    pointer = @head
+    while pointer.next != nil do
+      a_value.push(pointer.value)
+      pointer = pointer.next
+    end
+    a_value.push(pointer.value)
+    a_value.to_s
+  end
 end
-
 if __FILE__ == $0 then
 	lista1 = Lista.new()
 	lista1.add(1,2,3)
@@ -35,4 +44,5 @@ if __FILE__ == $0 then
 	puts "-- Estructura de la lista enlazada --"
   puts lista1
   puts "-- -- --"
+  puts lista1.to_a
 end
