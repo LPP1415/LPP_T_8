@@ -1,19 +1,21 @@
+if __FILE__ == $0 then
+    require "../questionFather/base"
+end
 module Question
-	class TrueOrFalse
-		attr_accessor :text, :right
+	class TrueOrFalse < QuestionFather
 		def initialize(args)
-			@text = args[:text]
-			@right = args[:right]
+			super
 		end
-		
 		def to_s
-			puts "#{@text} \n-True \n-False \n"
-			
-		end	
+			"#{@text} \n-True \n-False \n"
+		end
 	end
 end
 
-if __FILE__ == $0 then 
-qq = Question::TrueOrFalse.new({:text=>'2+2=4',:right=>'true'})
-qq.to_s
+if __FILE__ == $0 then
+	qq = Question::TrueOrFalse.new({:text=>'2+2=4',:right=>'true',:dif => 5})
+  q1 = Question::TrueOrFalse.new({:text=>'Capital de españa es madrid',:right=>'true',:dif => 5})
+  puts qq.to_s
+  puts "***"
+  puts qq <=> q1
 end

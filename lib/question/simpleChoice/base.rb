@@ -1,23 +1,15 @@
+if __FILE__ == $0 then
+    require "../questionFather/base"
+end
 module Question
-  class SimpleChoice
-    attr_accessor :text, :right, :distractor
-    
+  class SimpleChoice < QuestionFather
     def initialize(args)
-      @text = args[:text]
-      raise ArgumentError , 'arguments error unless text' unless @text
-      @right = args[:right]
-      raise ArgumentError , 'arguments error unless right'  unless @right
-      @distractor = args[:distractor]
-      raise ArgumentError , 'arguments error unless distractor' unless @distractor
+        super
     end
 
     def to_html
       options = @distractor+[ @right ]
-      #.shuffle baraja el array (sample coge uno al azar)
       options = options.shuffle
-      # DELIMITADOR la cadena consta de todo hasta que se encuentra
-      # el tag #
-      s = ''
       options.each do |option|
         s += %Q{<input type="radio" value="#{option}" name="0"/>#{option}<br/>}
       end
@@ -27,21 +19,20 @@ module Question
     end
 
     def to_s
-	options = @distractor+[@right]
-	options = options.shuffle
-	puts "#{@text} ? \n "
-	options.each do |option|
-		"#{option} \n"
-	end
-      
+	  options = @distractor+[@right]
+	  options = options.shuffle
+	  puts "#{@text} ?"
+	  options.each do |option|
+	    "#{option}"
+	  end
     end
-
   end
 end
 
 if __FILE__ == $0 then
-  #text: hace de , lo que va antes es un simbolo y hace de flechita como un hash#
-  qq = Question::SimpleChoice.new({:text=> '2+2=', :right=> 6, :distractor=> [4,5,2]})
-puts qq.to_s
-# puts qq.to_html
+    qq = Question::SimpleChoice.new({:text=> '2+2=', :right=> 6, :distractor=> [4,5,2], :dif => 4})
+    q1 = Question::SimpleChoice.new({:text=> '9*7/2=', :right=> 6, :distractor=> [4,5,2], :dif => 9})
+  puts qq.to_s
+  puts "****"
+  puts qq <=> q1
 end
