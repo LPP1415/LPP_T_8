@@ -1,5 +1,4 @@
-
-
+include Enumerable
 class Lista
   attr_accessor :head, :lastnext
   Node = Struct.new(:value, :next, :father)
@@ -7,7 +6,13 @@ class Lista
     @head = nil
     @lastnext = nil
   end
-
+  def each
+     aux = @head
+     while aux != nil
+         yield aux.value
+         aux = aux.next
+     end
+  end
   def add(*args)
     args.each do |value|
       if @head == nil then
@@ -49,7 +54,7 @@ if __FILE__ == $0 then
   puts lista1
   puts "-- -- --"
   puts lista1.to_a
-  
+
   listQuestion = Lista.new()
 
 	#Preguntas para el test de la practica 06
@@ -67,6 +72,8 @@ if __FILE__ == $0 then
 	puts "**********"
 	puts listQuestion.lastnext
 	puts "**********"
+    puts listQuestion.each { |o| p o }
+    puts listQuestion.is_a? Enumerable
 
 
 end
