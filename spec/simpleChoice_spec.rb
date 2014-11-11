@@ -22,7 +22,7 @@ module Question
                                        :right => 4,
                                        :distractor => [9,3,1])
     #Preguntas para el test de la practica 06
-        @p1 = Question::SimpleChoice.new(:text =>"¿Cual es la salida del siguiente código Ruby ? \n class Xyz \n    def pots \n     @nice\n   end\n   end\n", :right => 'nil' ,:distractor => ['#<Xyz: 0xa000208>','0','Nunguna de las anteriores'] )
+        @p1 = Question::SimpleChoice.new(:text =>"¿Cual es la salida del siguiente codigo Ruby ? \n class Xyz \n    def pots \n     @nice\n   end\n   end\n", :right => 'nil' ,:distractor => ['#<Xyz: 0xa000208>','0','Nunguna de las anteriores'] )
         @p2 = Question::SimpleChoice.new(:text => "La siguiente definici´on de un hash en Ruby es v´alida:
 
 hash_raro = {
@@ -66,18 +66,18 @@ end
         it "Pregunta 1" do
           expect(@p1.right) == 'nil'
         end
-        it "Pregunta 2" do 
+        it "Pregunta 2" do
           expect(@p2.right) == 'falso'
         end
         it "Pregunta 3"do
           expect(@p3.right) == '"HEY!"'
         end
-        it "Pregunta 4"do 
+        it "Pregunta 4"do
           expect(@p4.right) == 'Un objeto'
         end
         it "Pregunta 5"do
           expect(@p5.right) == 'Cierto'
-        end 
+        end
 
         it "Has to have the three components" do
           expect { Question::SimpleChoice.new(:text=>'5*8=?')}.to raise_error(ArgumentError)
