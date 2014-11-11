@@ -34,4 +34,13 @@ describe Lista do
 			expect(@listQuestion.to_s) == '#<struct Lista::Node value=#<Question::SimpleChoice:0x007fb7ac8f2918 @text="¿Cual es la salida del siguiente código Ruby ? \n class Xyz \n    def pots \n     @nice\n   end\n   end\n", @right="nil", @distractor=["#<Xyz: 0xa000208>", "0", "Nunguna de las anteriores"]>, next=#<struct Lista::Node value=#<Question::SimpleChoice:0x007fb7ac8f2850 @text="La siguiente definici´on de un hash en Ruby es v´alida:hash_raro = {[1, 2, 3] => Object.new(),Hash.new => :toto}", @right="falso", @distractor="Cierto">, next=#<struct Lista::Node value=#<Question::SimpleChoice:0x007fb7ac8f2710 @text="¿Cu´al es la salida del siguiente c´odigo Ruby?class Arraydef say_hi\"HEY!\"endendp [1, \"bob\"].say_hi", @right="\"HEY!\"", @distractor=["1", "bob", "Nunguna de las anteriores"]>, next=#<struct Lista::Node value=#<Question::SimpleChoice:0x007fb7ac8f25d0 @text="¿Cu´al es el tipo del objeto en el siguiente c´odigo Ruby?class Objetoend", @right="Un objeto", @distractor=["Una instancia de una clase", "Una constante", "Ninguna de las anteriores"]>, next=#<struct Lista::Node value=#<Question::SimpleChoice:0x007fb7ac8f2508 @text="Es apropiado que una clase Tablero herede de una clase Juego.", @right="Cierto", @distractor="Falso">, next=nil>>>>>'
 		end
 	end
+	describe "Lista enumerable" do
+		it "Enumerable en la jerarquia de herencia" do
+			expect(@listQuestion.is_a? Enumerable) == 'true'
+		end
+
+		it "Se puede recorrer con each" do
+			expect(@listQuestion.each { |o| o }) == '#<Question::SimpleChoice:0x007fd9f3129a10 @text="¿Cual es la salida del siguiente código Ruby ? \n class Xyz \n    def pots \n     @nice\n   end\n   end\n", @right="nil", @distractor=["#<Xyz: 0xa000208>", "0", "Nunguna de las anteriores"]>#<Question::SimpleChoice:0x007fd9f3129948 @text="La siguiente definici´on de un hash en Ruby es v´alida:hash_raro = {[1, 2, 3] => Object.new(),Hash.new => :toto}", @right="falso", @distractor="Cierto">#<Question::SimpleChoice:0x007fd9f3129808 @text="¿Cu´al es la salida del siguiente c´odigo Ruby?class Arraydef say_hi\"HEY!\"endendp [1, \"bob\"].say_hi", @right="\"HEY!\"", @distractor=["1", "bob", "Nunguna de las anteriores"]>#<Question::SimpleChoice:0x007fd9f31296c8 @text="¿Cu´al es el tipo del objeto en el siguiente c´odigo Ruby?class Objetoend", @right="Un objeto", @distractor=["Una instancia de una clase", "Una constante", "Ninguna de las anteriores"]>#<Question::SimpleChoice:0x007fd9f3129600 @text="Es apropiado que una clase Tablero herede de una clase Juego.", @right="Cierto", @distractor="Falso">'
+		end
+	end
 end
