@@ -1,6 +1,7 @@
 if __FILE__ == $0 then
-    require "../questionFather/base"
+  $: << "."
 end
+require "question/questionFather/base"
 module Question
 	class TrueOrFalse < QuestionFather
 		def initialize(args)
