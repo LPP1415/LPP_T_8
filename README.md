@@ -1,5 +1,6 @@
+# Práctica 8 de Lenguajes y paradigmas de la programación
+
 [![Build Status](https://travis-ci.org/LPP1415/LPP_T_8.svg?branch=master)](https://travis-ci.org/LPP1415/LPP_T_8)
-# Question::SimpleChoice
 
 TODO: Write a gem description
 
