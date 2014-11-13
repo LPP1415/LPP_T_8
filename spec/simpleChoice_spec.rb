@@ -1,11 +1,11 @@
+# encodign: UTF-8
 require './lib/question/simpleChoice'
 require './lib/question/trueOrFalse'
 
-module Question
   class TrueOrFalse
-    describe Question::TrueOrFalse do
+    describe TrueOrFalse do
       before :each do
-        @ptf = Question::TrueOrFalse.new({:text=>'2+2=4',:right=>'true'})
+        @ptf = TrueOrFalse.new({:text=>'2+2=4',:right=>'true'})
       end
       context "Question True/false" do
         it "tiene los valores esperados"do
@@ -16,14 +16,14 @@ module Question
     end
   end
   class SimpleChoice
-    describe  Question::SimpleChoice do
+    describe  SimpleChoice do
       before :each do
-        @sc = Question::SimpleChoice.new(:text => '2 + 2 =',
+        @sc = SimpleChoice.new(:text => '2 + 2 =',
                                        :right => 4,
                                        :distractor => [9,3,1])
     #Preguntas para el test de la practica 06
-        @p1 = Question::SimpleChoice.new(:text =>"¿Cual es la salida del siguiente codigo Ruby ? \n class Xyz \n    def pots \n     @nice\n   end\n   end\n", :right => 'nil' ,:distractor => ['#<Xyz: 0xa000208>','0','Nunguna de las anteriores'] )
-        @p2 = Question::SimpleChoice.new(:text => "La siguiente definici´on de un hash en Ruby es v´alida:
+        @p1 = SimpleChoice.new(:text =>"¿Cual es la salida del siguiente codigo Ruby ? \n class Xyz \n    def pots \n     @nice\n   end\n   end\n", :right => 'nil' ,:distractor => ['#<Xyz: 0xa000208>','0','Nunguna de las anteriores'], :dif => 1 )
+        @p2 = SimpleChoice.new(:text => "La siguiente definici´on de un hash en Ruby es v´alida:
 
 hash_raro = {
 
@@ -31,9 +31,9 @@ hash_raro = {
 
 Hash.new => :toto
 
-}", :right => 'falso', :distractor => 'Cierto')
+}", :right => 'falso', :distractor => 'Cierto', :dif => 2)
 
-        @p3 = Question::SimpleChoice.new(:text =>" ¿Cu´al es la salida del siguiente c´odigo Ruby?
+        @p3 = SimpleChoice.new(:text =>" ¿Cu´al es la salida del siguiente c´odigo Ruby?
 
 class Array
 
@@ -45,15 +45,15 @@ end
 
 end
 
-p [1, \"bob\"].say_hi", :right =>'"HEY!"', :distractor => ['1','bob','Nunguna de las anteriores'] )
-        @p4 = Question::SimpleChoice.new(:text => "¿Cu´al es el tipo del objeto en el siguiente c´odigo Ruby?
+p [1, \"bob\"].say_hi", :right =>'"HEY!"', :distractor => ['1','bob','Nunguna de las anteriores'], :dif =>3 )
+        @p4 = SimpleChoice.new(:text => "¿Cu´al es el tipo del objeto en el siguiente c´odigo Ruby?
 
 class Objeto
 
 end
-", :right =>'Un objeto', :distractor => ['Una instancia de una clase', 'Una constante', 'Ninguna de las anteriores'] )
-        @p5 = Question::SimpleChoice.new(:text => " Es apropiado que una clase Tablero herede de una clase Juego.
-", :right => 'Cierto', :distractor => 'Falso')
+", :right =>'Un objeto', :distractor => ['Una instancia de una clase', 'Una constante', 'Ninguna de las anteriores'] ,:dif=>4)
+        @p5 = SimpleChoice.new(:text => " Es apropiado que una clase Tablero herede de una clase Juego.
+", :right => 'Cierto', :distractor => 'Falso',:dif=>5)
 
 
       end
@@ -78,22 +78,12 @@ end
         it "Pregunta 5"do
           expect(@p5.right) == 'Cierto'
         end
-
-        it "Has to have the three components" do
-          expect { Question::SimpleChoice.new(:text=>'5*8=?')}.to raise_error(ArgumentError)
-        end
+      end
+      context "Comparable" do
+	it "Es comparable" do 
+		expect(@p5.is_a? Comparable) == true
+	end
       end
 
-      context "Whene converting" do
-        it "can be converted to html" do
-          expect(@sc).to respond_to :to_html
-        end
-
-        it "has to produce a reasonable HTML" do
-          r= %r{<h3>(.*)<\/h3><br\/><input type=\"radio\" value=\"\d\" name=\"0\"\/>\d.*}
-          expect( @sc.to_html ).to match(r)
-        end
-      end
     end
   end
-end
