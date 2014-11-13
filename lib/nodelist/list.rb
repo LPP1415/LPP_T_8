@@ -1,6 +1,6 @@
 # encoding: UTF-8
-  include Enumerable
   class Lista
+    include Enumerable
     attr_accessor :head, :lastnext
     Node = Struct.new(:value, :next, :father)
     def initialize()
