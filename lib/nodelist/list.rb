@@ -74,7 +74,8 @@
 	  puts listQuestion.first.right
 	  puts "**********"
 	  puts listQuestion.lastnext
-	  puts "**********"
+	  puts " "
+	  puts "******EACH****"
     puts listQuestion.each { |o| p o }
     puts listQuestion.is_a? Enumerable
 

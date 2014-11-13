@@ -83,6 +83,9 @@ end
 	it "Es comparable" do 
 		expect(@p5.is_a? Comparable) == true
 	end
+	it "Comparacion" do
+		expect(@p5<=>@p5) == 0
+	end
       end
 
     end
