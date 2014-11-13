@@ -1,4 +1,4 @@
-# encodign: UTF-8
+# encoding: UTF-8
 require './lib/question/simpleChoice'
 require './lib/question/trueOrFalse'
 

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 	class QuestionFather
 		include Comparable
 		attr_accessor :text, :right, :distractor,:dif
