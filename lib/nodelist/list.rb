@@ -1,3 +1,4 @@
+# encoding: UTF-8
   include Enumerable
   class Lista
     attr_accessor :head, :lastnext
