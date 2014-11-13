@@ -3,18 +3,9 @@ if __FILE__ == $0 then
 end
 require "question/questionFather/base"
   class SimpleChoice < QuestionFather
+    attr_accessor :text, :distractor, :right
     def initialize(args)
         super
-    end
-
-    def to_html
-      options = @distractor+[ @right ]
-      options = options.shuffle
-      options.each do |option|
-        s += %Q{<input type="radio" value="#{option}" name="0"/>#{option}<br/>}
-      end
-
-      "<h3>#{@text}</h3><br/>#{s}"
     end
 
     def to_s
