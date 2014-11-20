@@ -16,7 +16,7 @@ require "question/questionFather/base"
 
 if __FILE__ == $0 then
 	qq = Question::TrueOrFalse.new({:text=>'2+2=4',:right=>'true',:dif => 5})
-  q1 = Question::TrueOrFalse.new({:text=>'Capital de españa es madrid',:right=>'true',:dif => 5})
+  q1 = Question::TrueOrFalse.new({:text=>'Capital de espanya es madrid',:right=>'true',:dif => 5})
   puts qq.to_s
   puts "***"
   puts qq <=> q1
